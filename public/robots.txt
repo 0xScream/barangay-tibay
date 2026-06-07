@@ -1,0 +1,11 @@
+# Barangay Tibay Web Portal
+# robots.txt
+
+User-agent: *
+Disallow: /admin
+Disallow: /api/internal
+
+# Public areas
+Allow: /
+Allow: /login
+Allow: /register

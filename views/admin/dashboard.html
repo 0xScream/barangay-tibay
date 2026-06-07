@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Admin Dashboard</h1>
+        <div class="flag-banner">
+            🚩 <strong>FLAG 1:</strong> <code>BTF{0p4qu3_r3f_un0wn3d_pr0f1l3_t4k30v3r}</code>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3><%= userCount %></h3>
+            <p>Registered Residents</p>
+        </div>
+        <div class="stat-card">
+            <h3><%= reportCount %></h3>
+            <p>Total Reports</p>
+        </div>
+        <div class="stat-card">
+            <h3><%= pendingCount %></h3>
+            <p>Pending Reports</p>
+        </div>
+    </div>
+
+    <div class="recent-section">
+        <h2>Recent Reports</h2>
+        <% if (recentReports.length === 0) { %>
+            <p>No reports yet.</p>
+        <% } else { %>
+            <div class="reports-list">
+                <% recentReports.forEach(report => { %>
+                    <div class="report-item">
+                        <div class="report-info">
+                            <h4><%= report.title %></h4>
+                            <p>Submitted by <%= report.username %> on <%= new Date(report.created_at).toLocaleDateString() %></p>
+                        </div>
+                        <span class="badge badge-<%= report.status %>"><%= report.status %></span>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>

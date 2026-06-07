@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="page-header">
+        <h1>All Reports</h1>
+    </div>
+
+    <% if (reports.length === 0) { %>
+        <p>No reports found.</p>
+    <% } else { %>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Resident</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% reports.forEach(report => { %>
+                        <tr>
+                            <td><%= report.id %></td>
+                            <td><%= report.title %></td>
+                            <td><%= report.full_name %></td>
+                            <td><%= report.category %></td>
+                            <td><span class="badge badge-<%= report.status %>"><%= report.status %></span></td>
+                            <td><%= new Date(report.created_at).toLocaleDateString() %></td>
+                            <td>
+                                <form method="POST" action="/admin/reports/<%= report.id %>/status" style="display:inline">
+                                    <select name="status" onchange="this.form.submit()">
+                                        <option value="pending" <%= report.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                        <option value="reviewed" <%= report.status === 'reviewed' ? 'selected' : '' %>>Reviewed</option>
+                                        <option value="resolved" <%= report.status === 'resolved' ? 'selected' : '' %>>Resolved</option>
+                                    </select>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+</div>

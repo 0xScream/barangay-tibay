@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="page-header">
+        <h1>My Reports</h1>
+        <a href="/reports/new" class="btn btn-primary">Submit New Report</a>
+    </div>
+
+    <% if (reports.length === 0) { %>
+        <div class="empty-state">
+            <p>You haven't submitted any reports yet.</p>
+            <a href="/reports/new" class="btn btn-secondary">Submit Your First Report</a>
+        </div>
+    <% } else { %>
+        <div class="reports-grid">
+            <% reports.forEach(report => { %>
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="badge badge-<%= report.status %>"><%= report.status %></span>
+                        <span class="report-date"><%= new Date(report.created_at).toLocaleDateString() %></span>
+                    </div>
+                    <h3><%= report.title %></h3>
+                    <p class="report-category"><%= report.category %></p>
+                    <p class="report-excerpt"><%= report.description.substring(0, 100) %><%= report.description.length > 100 ? '...' : '' %></p>
+                    <a href="/reports/<%= report.id %>" class="btn btn-text">View Details</a>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+</div>

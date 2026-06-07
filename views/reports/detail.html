@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Report Details</h1>
+        <a href="/dashboard" class="btn btn-secondary">Back to Reports</a>
+    </div>
+
+    <div class="report-detail">
+        <div class="report-meta">
+            <span class="badge badge-<%= report.status %>"><%= report.status %></span>
+            <span class="report-date"><%= new Date(report.created_at).toLocaleDateString() %></span>
+        </div>
+        <h2><%= report.title %></h2>
+        <p class="report-category">Category: <%= report.category %></p>
+        <div class="report-description">
+            <%= report.description %>
+        </div>
+    </div>
+</div>

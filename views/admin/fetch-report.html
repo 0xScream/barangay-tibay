@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Fetch Report Template</h1>
+    </div>
+
+    <div class="form-card">
+        <p>Fetch a report template from an external URL. Enter the URL of the template document below.</p>
+        <!-- fetch-report feature: accepts any valid http:// or https:// URL -->
+        <!-- Security: IP filtering implemented to block localhost access -->
+        
+        <% if (error) { %>
+            <div class="error"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/admin/fetch-report">
+            <div class="form-group">
+                <label for="url">Template URL</label>
+                <input type="text" id="url" name="url" placeholder="https://example.com/template.txt" value="<%= url || '' %>" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Fetch Template</button>
+        </form>
+
+        <% if (content) { %>
+            <div class="fetch-result">
+                <h3>Fetched Content:</h3>
+                <pre><%= content %></pre>
+            </div>
+        <% } %>
+    </div>
+</div>

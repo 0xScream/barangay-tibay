@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Registered Residents</h1>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Full Name</th>
+                    <th>Address</th>
+                    <th>Role</th>
+                    <th>Registered</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.full_name %></td>
+                        <td><%= user.address %></td>
+                        <td><span class="badge badge-<%= user.role %>"><%= user.role %></span></td>
+                        <td><%= new Date(user.created_at).toLocaleDateString() %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
