@@ -13,13 +13,11 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // Environment dump - contains Flag 2 and hints
+    // Environment dump
     if (url.pathname === '/env') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         const envDump = `
 === Internal API Environment ===
-
-FLAG_2: BTF{1nt3rn4l_s3rv1c3_3xp0s3d_v14_ssrf}
 
 System Information:
 - Node Version: ${process.version}
@@ -40,7 +38,7 @@ Example: /exec?cmd=whoami
         return;
     }
 
-    // Command execution - RCE endpoint (Flag 3)
+    // Command execution - RCE endpoint
     if (url.pathname === '/exec') {
         const cmd = url.searchParams.get('cmd');
         
@@ -60,7 +58,6 @@ Example: /exec?cmd=whoami
                 output += `Error: ${error.message}\n`;
                 output += `Stderr: ${stderr}\n`;
             } else {
-                output += `FLAG_3: BTF{rc3_v14_1nt3rn4l_4p1_pwn3d}\n\n`;
                 output += `Output:\n${stdout}\n`;
                 if (stderr) output += `\nStderr:\n${stderr}\n`;
             }

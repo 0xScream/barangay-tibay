@@ -526,31 +526,6 @@ tr:nth-child(even) {
     line-height: 1.5;
 }
 
-/* Flag Banner */
-.flag-banner {
-    background: var(--primary);
-    color: var(--white);
-    padding: var(--space-lg);
-    border: 3px solid var(--primary-dark);
-    border-left: 6px solid var(--accent);
-    margin-top: var(--space-lg);
-    font-size: 14px;
-}
-
-.flag-banner strong {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.flag-banner code {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 4px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-family: "Courier New", monospace;
-    letter-spacing: 1px;
-    font-size: 13px;
-}
-
 /* Feature Cards */
 .features {
     display: grid;
