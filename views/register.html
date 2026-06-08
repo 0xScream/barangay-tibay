@@ -6,8 +6,12 @@
         <% } %>
         <form method="POST" action="/register">
             <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required autofocus>
+            </div>
+            <div class="form-group">
                 <label for="full_name">Full Name</label>
-                <input type="text" id="full_name" name="full_name" required autofocus>
+                <input type="text" id="full_name" name="full_name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>

@@ -13,9 +13,9 @@ router.get('/register', (req, res) => {
 
 // Register handler
 router.post('/register', (req, res) => {
-    const { full_name, email, phone, address, password, confirm_password } = req.body;
+    const { username, full_name, email, phone, address, password, confirm_password } = req.body;
 
-    if (!full_name || !email || !phone || !address || !password || !confirm_password) {
+    if (!username || !full_name || !email || !phone || !address || !password || !confirm_password) {
         return res.render('register', { error: 'All fields are required' });
     }
 
@@ -23,12 +23,9 @@ router.post('/register', (req, res) => {
         return res.render('register', { error: 'Passwords do not match' });
     }
 
-    // Generate username from email (part before @)
-    const username = email.split('@')[0].toLowerCase();
-
     const existingUser = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
     if (existingUser) {
-        return res.render('register', { error: 'Email already registered' });
+        return res.render('register', { error: 'Username already taken' });
     }
 
     const hashedPassword = bcrypt.hashSync(password, 10);
