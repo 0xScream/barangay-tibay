@@ -14,5 +14,9 @@
         <div class="report-description">
             <%= report.description %>
         </div>
+        <p class="report-meta" style="margin-top:1rem;">
+            Submitted by: <a href="/users/<%= report.user_id %>"><%= report.username %></a>
+            <span style="color:#999;font-size:0.85em;">(#<%= report.user_id %>)</span>
+        </p>
     </div>
 </div>

@@ -24,8 +24,9 @@ router.post('/reports/new', requireAuth, (req, res) => {
 
 // View single report
 router.get('/reports/:id', requireAuth, (req, res) => {
-    const report = db.prepare('SELECT * FROM reports WHERE id = ? AND user_id = ?')
-        .get(req.params.id, req.session.userId);
+    const report = db.prepare(
+        'SELECT r.*, u.username FROM reports r JOIN users u ON r.user_id = u.id WHERE r.id = ? AND r.user_id = ?'
+    ).get(req.params.id, req.session.userId);
 
     if (!report) {
         return res.status(404).send('Report not found');

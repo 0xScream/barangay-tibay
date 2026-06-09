@@ -50,12 +50,14 @@ const dashboardRoutes = require('./routes/dashboard');
 const reportsRoutes = require('./routes/reports');
 const profileRoutes = require('./routes/profile');
 const adminRoutes = require('./routes/admin');
+const usersRoutes = require('./routes/users');
 
 app.use(authRoutes);
 app.use(dashboardRoutes);
 app.use(reportsRoutes);
 app.use(profileRoutes);
 app.use(adminRoutes);
+app.use(usersRoutes);
 
 // Landing page
 app.get('/', (req, res) => {

@@ -1,7 +1,10 @@
 <div class="container">
     <div class="page-header">
         <h1>My Reports</h1>
-        <a href="/reports/new" class="btn btn-primary">Submit New Report</a>
+        <div>
+            <a href="/users/<%= user.id %>" class="btn btn-secondary">My Public Profile</a>
+            <a href="/reports/new" class="btn btn-primary">Submit New Report</a>
+        </div>
     </div>
 
     <% if (reports.length === 0) { %>
